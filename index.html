@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flappy Bird: Ancient Pillars Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Responsive 16:9 Aspect Ratio Container -->
+  <div id="game-container">
+    <canvas id="game-canvas" aria-label="Flappy Bird-style game with customizable bird and ancient pillars" role="img" tabindex="0">
+      Sorry, your browser does not support the canvas element.
+    </canvas>
+    <!-- Overlay Menus -->
+    <div id="overlay">
+      <!-- Home Menu -->
+      <div id="home-menu" class="menu active" role="dialog" aria-modal="true">
+        <h1 class="game-title">Flappy Bird: Ancient Pillars</h1>
+        <div class="menu-buttons">
+          <button id="btn-new-game" class="menu-btn green" aria-label="Start New Game">New Game</button>
+          <button id="btn-settings" class="menu-btn blue" aria-label="Open Settings">Settings</button>
+          <button id="btn-quit" class="menu-btn red" aria-label="Quit Game">Quit</button>
+        </div>
+        <div class="high-score" id="high-score-label"></div>
+      </div>
+      <!-- Settings Menu -->
+      <div id="settings-menu" class="menu" role="dialog" aria-modal="true" aria-label="Settings">
+        <h2>Settings</h2>
+        <form id="settings-form" autocomplete="off">
+          <fieldset>
+            <legend>Bird Customization</legend>
+            <label for="bird-color">Body Color:</label>
+            <input type="color" id="bird-color" name="bird-color" value="#2ecc40" aria-label="Bird Body Color">
+            <label for="eye-size">Eye Size:</label>
+            <input type="range" id="eye-size" name="eye-size" min="8" max="24" value="16" aria-label="Bird Eye Size">
+            <span id="eye-size-value">16</span> px
+            <div class="bird-preview-label">Preview:</div>
+            <canvas id="bird-preview" width="64" height="64" aria-label="Bird Preview"></canvas>
+          </fieldset>
+          <fieldset>
+            <legend>Audio</legend>
+            <label for="music-volume">Music Volume:</label>
+            <input type="range" id="music-volume" min="0" max="100" value="60" aria-label="Music Volume">
+            <span id="music-volume-value">60</span>%
+            <label for="sfx-volume">SFX Volume:</label>
+            <input type="range" id="sfx-volume" min="0" max="100" value="80" aria-label="Sound Effects Volume">
+            <span id="sfx-volume-value">80</span>%
+            <label class="mute-toggle">
+              <input type="checkbox" id="mute-all" aria-label="Mute All Sounds">
+              Mute All
+            </label>
+          </fieldset>
+          <div class="settings-actions">
+            <button type="button" id="btn-settings-save" class="menu-btn green">Save</button>
+            <button type="button" id="btn-settings-cancel" class="menu-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <!-- Countdown Overlay -->
+      <div id="countdown-overlay" class="overlay-center" aria-live="polite"></div>
+      <!-- Game Over Overlay -->
+      <div id="gameover-overlay" class="overlay-center" role="alertdialog" aria-modal="true">
+        <div class="gameover-box">
+          <h2>Game Over</h2>
+          <div id="final-score"></div>
+          <button id="btn-restart" class="menu-btn green">Restart</button>
+          <button id="btn-home" class="menu-btn">Home</button>
+        </div>
+      </div>
+      <!-- Quit Confirmation -->
+      <div id="quit-overlay" class="overlay-center" role="alertdialog" aria-modal="true">
+        <div class="quit-box">
+          <h2>Quit Game?</h2>
+          <button id="btn-quit-yes" class="menu-btn red">Yes</button>
+          <button id="btn-quit-no" class="menu-btn">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
